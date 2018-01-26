@@ -1688,6 +1688,8 @@ eConst0 a b       = withDummyExpInfo <| EConst space0 a b noWidgetDecl
 eConst a b        = withDummyExpInfo <| EConst space1 a b noWidgetDecl
 eConstDummyLoc0 a = withDummyExpInfo <| EConst space0 a dummyLoc noWidgetDecl
 eConstDummyLoc a  = withDummyExpInfo <| EConst space1 a dummyLoc noWidgetDecl
+eInt0 n           = eConstDummyLoc0 (toFloat n)
+eInt n            = eConstDummyLoc (toFloat n)
 eList0 a b        = withDummyExpInfo <| EList space0 a space0 b space0
 eList a b         = withDummyExpInfo <| EList space1 a space0 b space0
 eTuple0 a         = eList0 a Nothing
@@ -2008,6 +2010,10 @@ mapPrecedingWhitespacePat stringMap pat =
         PAs    ws1 ident ws2 p     -> PAs    (mapWs ws1) ident ws2 p
   in
     replaceP__ pat p__
+
+
+removePrecedingWhitespace : Exp -> Exp
+removePrecedingWhitespace = replacePrecedingWhitespace ""
 
 
 ensureWhitespace : String -> String
