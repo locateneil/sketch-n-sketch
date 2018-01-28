@@ -1071,7 +1071,7 @@ initModel =
     , widgets       = ws
     , liveSyncInfo  = liveSyncInfo
     , liveSyncDelay = False
-    , outputMode    = ShowValue
+    , outputMode    = Live
     , mouseMode     = MouseNothing
     , dimensions    = { width = 1000, height = 800 } -- dummy in case initCmd fails
     , mouseState    = (Nothing, {x = 0, y = 0}, Nothing)
@@ -1172,5 +1172,5 @@ initModel =
     , giveUpConfirmed = False
     , lastSelectedTemplate = Nothing
     , valueEditorString = ValUnparser.strVal v
-    , syntax = Syntax.Elm
+    , syntax = Syntax.Little
     }
